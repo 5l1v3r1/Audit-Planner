@@ -1,0 +1,56 @@
+#{extends 'main.html' /}
+#{set title:'Form' /}
+
+#{form @save()}
+    <input type="hidden" name="contact.id" value="${contact?.id}">
+    
+    <p class="field">
+        <label for="audit_target">Audit Target:</label>
+        <input type="text" id="audit_target" name="contact.audit_target" value="${contact?.audit_target}">
+        <span class="error">${errors.forKey('contact.audit_target')}</span>
+    </p>
+
+    <p class="field">
+        <label for="auditor_list">Auditor List:</label>
+        <input type="text" id="auditor_list" name="contact.auditor_list" value="${contact?.auditor_list}">
+        <span class="error">${errors.forKey('contact.auditor_list')}</span>
+    </p>
+
+    <p class="field">
+        <label for="audit_schedule">Audit Schedule:</label>
+        <input type="text" id="audit_schedule" name="contact.audit_schedule" value="${contact?.audit_schedule?.format('yyyy-MM-dd')}">
+        <span class="error">${errors.forKey('contact.audit_schedule')}</span>
+    </p>
+
+    <p class="field">
+        <label for="contact_info">Contact Info:</label>
+        <input type="text" id="contact_info" name="contact.contact_info" value="${contact?.contact_info}">
+        <span class="error">${errors.forKey('contact.contact_info')}</span>
+    </p>
+
+    <p class="field">
+        <label for="report">Report:</label>
+        <input type="text" id="report" name="contact.report" value="${contact?.report}">
+        <span class="error">${errors.forKey('contact.report')}</span>
+    </p>
+
+    <p class="buttons">
+     	<a href="@{list()}">Cancel</a> or <input type="submit" value="Save this audit" id="saveAudit">
+    </p>
+
+
+    <script type="text/javascript" charset="${_response_encoding}">
+        $("#audit_schedule").datepicker({dateFormat:'yy-mm-dd', showAnim:'fadeIn'})
+	</script>
+#{/form}
+
+    #{form @report(), id:'formReport'}
+        <p class="field">
+            <input type="hidden" name="id" size="19" value="${contact.id}" />
+        </p>   
+        <p class="buttons">
+            <input type="submit" value="Download" />
+        </p> 
+         
+    #{/form} 
+ 	 	

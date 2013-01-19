@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+*       /                                       module:secure
+GET     /                                       Application.index
+POST    /audit                                  Application.save
+# GET     /contacts/{id}                          Application.form
+GET     /auditor/new                            Application.form
+POST     /login                                  Application.login
+GET     /newauditplan                           Application.newauditplan
+GET     /auditor                                Application.list
+GET     /auditor/{id}                           Application.form
+GET     /search                                 Application.search
+POST     /search/{audit_schedule}               Application.search
+GET      /report/                           Application.report
+POST     /report/{id}                           Application.report
+
+# Map static resources from the /app/public folder to the /public path
+GET     /                                       staticDir:public
